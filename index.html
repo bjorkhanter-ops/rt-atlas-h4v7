@@ -403,13 +403,28 @@
     .rail{position:static}
     .split{grid-template-columns:1fr}
     svg.map{max-height:none;width:100%}
-    /* 인쇄에서는 선택 격리를 해제 — 전체 분포를 보여준다.
-       무채색 토큰을 원래 브랜드 변수로 되돌리는 대신 규칙 자체를 무력화한다. */
-    .has-sel .iso-store:not(.sel) .iso-t{fill:revert-layer}
-    .has-sel .iso-store:not(.sel) .iso-r{fill:revert-layer}
-    .has-sel .iso-store:not(.sel) .iso-l{fill:revert-layer}
+    /* 인쇄에서는 선택 격리를 해제 — 전체 분포를 한 장에 담는다.
+       revert-layer는 캐스케이드 레이어를 쓰지 않는 이 문서에서 UA 기본값(검정)으로
+       되돌려버리므로 쓰지 않는다. 유통사별 브랜드 변수를 명시 복원한다. */
+    .has-sel .iso-store:not(.sel)[data-operator="hyundai"] .iso-t{fill:var(--op-hyundai-top)}
+    .has-sel .iso-store:not(.sel)[data-operator="hyundai"] .iso-r{fill:var(--op-hyundai)}
+    .has-sel .iso-store:not(.sel)[data-operator="hyundai"] .iso-l{fill:var(--op-hyundai-side)}
+    .has-sel .iso-store:not(.sel)[data-operator="lotte"] .iso-t{fill:var(--op-lotte-top)}
+    .has-sel .iso-store:not(.sel)[data-operator="lotte"] .iso-r{fill:var(--op-lotte)}
+    .has-sel .iso-store:not(.sel)[data-operator="lotte"] .iso-l{fill:var(--op-lotte-side)}
+    .has-sel .iso-store:not(.sel)[data-operator="shinsegae"] .iso-t{fill:var(--op-shinsegae-top)}
+    .has-sel .iso-store:not(.sel)[data-operator="shinsegae"] .iso-r{fill:var(--op-shinsegae)}
+    .has-sel .iso-store:not(.sel)[data-operator="shinsegae"] .iso-l{fill:var(--op-shinsegae-side)}
+    .has-sel .iso-store:not(.sel)[data-operator="galleria"] .iso-t{fill:var(--op-galleria-top)}
+    .has-sel .iso-store:not(.sel)[data-operator="galleria"] .iso-r{fill:var(--op-galleria)}
+    .has-sel .iso-store:not(.sel)[data-operator="galleria"] .iso-l{fill:var(--op-galleria-side)}
+    .has-sel .iso-store:not(.sel)[data-operator="costco"] .iso-t{fill:var(--op-costco-top)}
+    .has-sel .iso-store:not(.sel)[data-operator="costco"] .iso-r{fill:var(--op-costco)}
+    .has-sel .iso-store:not(.sel)[data-operator="costco"] .iso-l{fill:var(--op-costco-side)}
     .has-sel .iso-store:not(.sel){opacity:1}
     .has-sel .iso-store:not(.sel) .iso-mark{opacity:.94}
+    .has-sel .iso-store:not(.sel) .iso-shadow{opacity:.15}
+    .has-sel .anchor{opacity:.5}
     .has-sel .prov{fill:#eef1f4}
     .tw{max-height:none;overflow:visible}
     thead{display:table-header-group}
